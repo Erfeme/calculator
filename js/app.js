@@ -66,9 +66,13 @@ resetButton.addEventListener('click',e=>{
 })
 
 resultButton.addEventListener('click', e=>{
-    display.innerText = operation(n1,n2,operator)
-    n1 = operation(n1,n2,operator);
-    n2 = '0';
+    if(n1 != '' && n2 != ''){
+        display.innerText = operation(n1,n2,operator)
+        n1 = operation(n1,n2,operator);
+        n2 = '';
+        oflag=false;    
+    }
+    
 })
 
 /* Functions */
