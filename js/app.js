@@ -9,6 +9,7 @@ const resultButton = document.querySelector('.result');
 let n1 = "";
 let n2 = "";
 let nflag = false;
+let oflag = false;
 let operator = "";
 
 /* Event Listeners */ 
@@ -22,6 +23,7 @@ numberButtons.forEach(btn=>{
         } else if(nflag == true){
                 n2 +=e.target.value;
                 display.innerText = n2;
+
         }
     })
 })
@@ -30,9 +32,27 @@ operatorButtons.forEach(btn=>{
 
     btn.addEventListener('click',e=>{
         
-        operator = e.target.value;
+        if(oflag == false){
 
-        nflag = true;
+            operator = e.target.value;
+
+             nflag = true;
+
+             oflag = true;
+
+        } else if (oflag == true){
+
+            display.innerText = operation(n1,n2,operator);
+
+            n1 = display.innerText;
+
+            operator = e.target.value;
+
+            n2 = '';
+
+        }
+
+        
         
     })
 
@@ -40,13 +60,15 @@ operatorButtons.forEach(btn=>{
 
 resetButton.addEventListener('click',e=>{
     nflag = false;
-    n1 = "";
+    n1 ="";
     n2 ="";
     display.innerText = "0";
 })
 
 resultButton.addEventListener('click', e=>{
     display.innerText = operation(n1,n2,operator)
+    n1 = operation(n1,n2,operator);
+    n2 = '0';
 })
 
 /* Functions */
@@ -67,17 +89,17 @@ const operation=(n1,n2,operator)=>{
 }
 
 const sum=(n1,n2)=>{
-    return parseInt(n1) + parseInt(n2);
+    return parseFloat(n1) + parseFloat(n2);
 }
 
 const sub=(n1,n2)=>{
-    return parseInt(n1) - parseInt(n2);
+    return parseFloat(n1) - parseFloat(n2);
 }
 
 const prod=(n1,n2)=>{
-    return parseInt(n1) * parseInt(n2);
+    return parseFloat(n1) * parseFloat(n2);
 }
 
 const div=(n1,n2)=>{
-    return parseInt(n1) / parseInt(n2);
+    return parseFloat(n1) / parseFloat(n2);
 }
