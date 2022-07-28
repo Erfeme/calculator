@@ -4,6 +4,7 @@ const display = document.querySelector('.display');
 const operatorButtons = document.querySelectorAll('.operator');
 const resetButton = document.querySelector('.reset');
 const resultButton = document.querySelector('.result');
+const percentageButton = document.querySelector('.percentage')
 
 /* Auxiliar variables */ 
 let n1 = "";
@@ -66,6 +67,7 @@ resetButton.addEventListener('click',e=>{
 })
 
 resultButton.addEventListener('click', e=>{
+    
     if(n1 != '' && n2 != ''){
         display.innerText = operation(n1,n2,operator)
         n1 = operation(n1,n2,operator);
@@ -73,6 +75,23 @@ resultButton.addEventListener('click', e=>{
         oflag=false;    
     }
     
+})
+
+percentageButton.addEventListener('click',e=>{
+
+        
+    if(n1 != '' && n2 != ''){
+        console.log(e);
+        console.log(nflag, oflag);
+        if(nflag = false){
+            n1 = n1/100;
+            display.innerText=n1;
+        } else {
+            n2 = n2/100;
+            display.innerText=n2;
+        }
+    }
+
 })
 
 /* Functions */
