@@ -47,7 +47,6 @@ resetButton.addEventListener('click',e=>{
 
 resultButton.addEventListener('click', e=>{
     display.innerText = operation(n1,n2,operator)
-    console.log(n1,n2,operator);
 })
 
 /* Functions */
@@ -57,11 +56,28 @@ const operation=(n1,n2,operator)=>{
     switch (operator){
         case '+':
             return sum(n1,n2);
-
+        case'-':
+            return sub(n1,n2);
+        case'*':
+            return prod(n1,n2);
+        case'/':
+            return div(n1,n2);
     }
 
 }
 
 const sum=(n1,n2)=>{
     return parseInt(n1) + parseInt(n2);
+}
+
+const sub=(n1,n2)=>{
+    return parseInt(n1) - parseInt(n2);
+}
+
+const prod=(n1,n2)=>{
+    return parseInt(n1) * parseInt(n2);
+}
+
+const div=(n1,n2)=>{
+    return parseInt(n1) / parseInt(n2);
 }
