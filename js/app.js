@@ -32,35 +32,38 @@ numberButtons.forEach(btn=>{
 operatorButtons.forEach(btn=>{
 
     btn.addEventListener('click',e=>{
+            
         
-        if(oflag == false){
 
-            operator = e.target.value;
+            if(oflag == false){
 
-             nflag = true;
+                operator = e.target.value;
 
-             oflag = true;
+                nflag = true;
 
-        } else if (oflag == true){
+                oflag = true;
 
-            display.innerText = operation(n1,n2,operator);
+            } else if (oflag == true){
 
-            n1 = display.innerText;
+                display.innerText = operation(n1,n2,operator);
 
-            operator = e.target.value;
+                n1 = display.innerText;
 
-            n2 = '';
+                operator = e.target.value;
 
-        }
+                n2 = '';
+
+            }
 
         
-        
+            
     })
 
 })
 
 resetButton.addEventListener('click',e=>{
     nflag = false;
+    oflag = false;
     n1 ="";
     n2 ="";
     display.innerText = "0";
@@ -69,7 +72,7 @@ resetButton.addEventListener('click',e=>{
 resultButton.addEventListener('click', e=>{
     
     if(n1 != '' && n2 != ''){
-        display.innerText = operation(n1,n2,operator)
+        display.innerText = operation(n1,n2,operator);
         n1 = operation(n1,n2,operator);
         n2 = '';
         oflag=false;    
@@ -79,18 +82,18 @@ resultButton.addEventListener('click', e=>{
 
 percentageButton.addEventListener('click',e=>{
 
-        
-    if(n1 != '' && n2 != ''){
-        console.log(e);
-        console.log(nflag, oflag);
-        if(nflag = false){
-            n1 = n1/100;
+            
+        if(nflag == false && n1!=''){
+            n1 = (parseInt(n1)/100);
             display.innerText=n1;
-        } else {
-            n2 = n2/100;
+        } else if(nflag==true&&n2!=''){
+            n2 = parseInt(n2)/100;
             display.innerText=n2;
+        } else if (oflag==false && nflag==true){
+            n1 = parseInt(n1)/100;
+            display.innerText=n1;
         }
-    }
+    
 
 })
 
@@ -112,17 +115,17 @@ const operation=(n1,n2,operator)=>{
 }
 
 const sum=(n1,n2)=>{
-    return parseFloat(n1) + parseFloat(n2);
+    return parseInt(n1) + parseInt(n2);
 }
 
 const sub=(n1,n2)=>{
-    return parseFloat(n1) - parseFloat(n2);
+    return parseInt(n1) - parseInt(n2);
 }
 
 const prod=(n1,n2)=>{
-    return parseFloat(n1) * parseFloat(n2);
+    return parseInt(n1) * parseInt(n2);
 }
 
 const div=(n1,n2)=>{
-    return parseFloat(n1) / parseFloat(n2);
+    return parseInt(n1) / parseInt(n2);
 }
