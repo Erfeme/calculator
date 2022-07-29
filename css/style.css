@@ -30,7 +30,8 @@ body{
     color:#ffffff;
     font-size:60px;
     text-align:left;
-    
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 

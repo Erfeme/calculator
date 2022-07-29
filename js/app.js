@@ -5,6 +5,7 @@ const operatorButtons = document.querySelectorAll('.operator');
 const resetButton = document.querySelector('.reset');
 const resultButton = document.querySelector('.result');
 const percentageButton = document.querySelector('.percentage')
+const negativeButton = document.querySelector('.negative');
 
 /* Auxiliar variables */ 
 let n1 = "";
@@ -35,7 +36,7 @@ operatorButtons.forEach(btn=>{
             
         
 
-            if(oflag == false){
+            if(oflag == false && n1!=''){
 
                 operator = e.target.value;
 
@@ -84,16 +85,33 @@ percentageButton.addEventListener('click',e=>{
 
             
         if(nflag == false && n1!=''){
-            n1 = (parseInt(n1)/100);
+            n1 = (parseFloat(n1)/100);
             display.innerText=n1;
         } else if(nflag==true&&n2!=''){
-            n2 = parseInt(n2)/100;
+            n2 = parseFloat(n2)/100;
             display.innerText=n2;
         } else if (oflag==false && nflag==true){
-            n1 = parseInt(n1)/100;
+            n1 = parseFloat(n1)/100;
+            display.innerText=n1;
+        } else if (oflag==true && nflag==true){
+            n1 = parseFloat(n1)/100;
             display.innerText=n1;
         }
-    
+
+})
+
+negativeButton.addEventListener('click',e=>{
+
+    if(nflag == false && n1!=''){
+        n1 = parseFloat(n1) * -1;
+        display.innerText=n1;
+    } else if(nflag==true&&n2!=''){
+        n2 = parseFloat(n2) * -1;
+        display.innerText=n2;
+    } else if (oflag==false && nflag==true){
+        n1 = parseFloat(n1) * -1;
+        display.innerText=n1;
+    }
 
 })
 
@@ -115,17 +133,17 @@ const operation=(n1,n2,operator)=>{
 }
 
 const sum=(n1,n2)=>{
-    return parseInt(n1) + parseInt(n2);
+    return parseFloat(n1) + parseFloat(n2);
 }
 
 const sub=(n1,n2)=>{
-    return parseInt(n1) - parseInt(n2);
+    return parseFloat(n1) - parseFloat(n2);
 }
 
 const prod=(n1,n2)=>{
-    return parseInt(n1) * parseInt(n2);
+    return parseFloat(n1) * parseFloat(n2);
 }
 
 const div=(n1,n2)=>{
-    return parseInt(n1) / parseInt(n2);
+    return parseFloat(n1) / parseFloat(n2);
 }
